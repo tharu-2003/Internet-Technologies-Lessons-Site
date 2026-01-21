@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lesson-Form-Elements</title>
+</head>
+<body>
+    <strong><h1>Form Elements</h1></strong>
+
+    <strong>====== 1. Lable ======</strong><br />
+
+    <br /><label for="userName"> User Name :</label><br /><hr />
+
+    <br /><strong>====== 2. Input ======</strong><br />
+
+    <p>------Text input------</p>
+
+    <label for="firstName"> First Name :</label>
+    <input type="text" placeholder="Enter your First Name" maxlength="10" readonly />
+
+    <p>------Number input------</p>
+
+    <label for="age"> Age : </label>
+    <input type="number" value="18" />
+
+    <p>------Password input------</p>
+
+    <label for="password"> Password : </label>
+    <input type="password" placeholder="password"/>
+
+    <p>------Date input------</p>
+
+    <label for="date"> Date : </label>
+    <input type="date" />
+
+    <p>------Radio Buttons------</p>
+
+    <label for="male"> Male </label>
+    <input type="radio" name="gender" />
+    <label for="female"> Female </label>
+    <input type="radio" name="gender" />
+
+    <p>------Chek Box------</p>
+
+    <label for="remember"> Remember Me </label>
+    <input type="checkbox" name="remember">
+
+    <p>------File upload------</p>
+    <label for="file"> Upload File </label>
+    <input type="file" name="file" />
+
+    <hr /><br /><strong>====== 3. Textarea ======</strong><br /><br />
+
+    <textarea 
+        name="massage" 
+        id="massage" 
+        placeholder="Enter your massage" 
+        rows="4"
+        cols="80"
+    ></textarea>
+
+    <hr /><br /><strong>====== 4. Button ======</strong><br /><br />
+
+    <button>Click Me</button>
+
+    <br>
+
+    <button type="button"> Click</button>
+
+    <br>
+
+    <button onclick="alert('Hellow !!')">Click here</button>
+
+    <hr /><br /><strong>====== 5. Select ======</strong><br /><br />
+
+    <select name="technologies" id="tech">
+        <option value="java"> Java </option>
+        <option value="python"> Python </option>
+        <option value="javacript"> Javascript </option>
+    </select>    
+
+    <hr /><br /><strong>====== 6. Fieldset & legend ======</strong><br /><br />
+
+    <fieldset>
+        <legend>Personal Information</legend>
+        <label for="firstName">First Name :</label>
+        <input type="text" name="firstName" id="firstName" placeholder="Enter Your First Name" required /><br>
+        <label for="lastName">Last Name :</label>
+        <input type="text" name="lastName" id="lastName" placeholder="Enter Your Last Name"/>
+    </fieldset>
+
+    <br>
+
+    <hr /><br /><strong>====== 7. Form ======</strong><br /><br />
+
+    <form action="/submit-form">
+        <label for="firstName">First Name :</label>
+        <input type="text" name="firstName" id="firstName" placeholder="Enter Your First Name" required /><br>
+        
+        <label for="lastName">Last Name :</label>
+        <input type="text" name="lastName" id="lastName" placeholder="Enter Your Last Name" required />
+        <br />
+        <button type="submit"> Submit </button>
+    </form>
+
+
+</body>
+</html>

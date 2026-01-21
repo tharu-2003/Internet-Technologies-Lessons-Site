@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lesson-css-selectors</title>
+
+    <style>
+        h2{
+            color: red;
+        }
+
+        .heading{
+            color: aqua;
+        }
+        #title{
+            color: violet;
+        }
+
+        a[target="_blank"]{
+            color: red;
+
+        }
+
+        /* div p{
+            color: blue;
+        } */
+
+        div > p{
+            color: green;
+        }
+
+        h2 + p{
+            background-color: brown;
+        }
+
+        h1 ~ p{
+            color: blue;
+        }
+
+        li:first-child{
+            color: gold;
+        }
+        li:last-child{
+            color: violet;
+        }
+        li:nth-child(4){
+            background-color: gold;
+        }
+        li:nth-child(even){
+            color: red;
+        }
+
+        ul:hover {
+            background-color: aquamarine;
+        }
+
+        p::first-letter{
+            font-size: 20px;
+            color: red;
+        }
+
+        p::before{
+            content: "Hello";
+            color: red;
+        }
+        p::after{
+            content: "Iwarayi";
+            color: red;
+        }
+
+        h1,
+        h2,
+        h3{
+            color: blue;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>CSS Selectors</h1>
+
+    <strong>====== 1. Element Selector ======</strong>
+
+    <h2>Hello World!!!</h2>
+
+    <strong>====== 2. Class Selector ======</strong>
+
+            <h1 class="heading">Heading 1</h1>
+            <h2 class="heading">Heading 2</h2>
+            <h3 class="heading">Heading 3</h3>
+            <h4 class="heading">Heading 4</h4>
+            <h5 class="heading">Heading 5</h5>
+            <h6 class="heading">Heading 6</h6>
+
+    <strong>====== 3. ID Selector ======</strong>
+
+    <h3 id="title">My Title</h3>
+    <h3 id="title">My Title2</h3>
+
+    <strong>====== 4. Attribute Selector ======</strong>
+
+    <br>
+    <a href="https://www.google.com" target="_blank">Click here</a>
+    <br><br>
+    
+    <strong>====== 5. Descendant Selector (space) ======</strong>
+
+    <p>Hello World!!</p>
+
+    <div>
+        <p>One</p>
+        <p>Two</p>
+    </div>
+
+    <strong>====== 6. Child Selector (>) ======</strong>
+
+    <div>
+        <p>This paragraph is a direct child of div</p>
+        <section>
+            <p>This paradraph is inside a section, not a direct child of div</p>
+        </section>
+    </div>
+
+    <strong>====== 7. Adjacent Sibling Selector (+) ======</strong>
+
+    <h2>Adjacent</h2>
+    <p>Hello One</p>
+    <p>Hello Two</p>
+
+    <strong>====== 8. General Sibling Selector (~) ======</strong>
+
+    <h1>Main Heading</h1>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <div>
+        <p>Hellow World!</p>
+    </div>
+
+    <strong>====== 9. Pseudo Class Selector ======</strong>
+
+    <ul>
+        <li>java</li>
+        <li>Sql</li>
+        <li>CSS</li>
+        <li>MongoDb</li>
+        <li>JS</li>
+    </ul>
+
+    <strong>====== 10. Pseudo Element Selector ======</strong>
+
+    <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla, dolores!
+    </p>
+
+    <strong>====== 11. Grouping Selector (,) ======</strong>
+
+            <h1>Heading 1</h1>
+            <h2>Heading 2</h2>
+            <h3>Heading 3</h3>
+            <h4>Heading 4</h4>
+</body>
+</html>

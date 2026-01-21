@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise-13</title>
+</head>
+<style>
+         .body{
+            margin: 0;
+        }
+        .heder{
+            background-color: black;
+            height: 80px;
+            width: 1500px;
+            color: white;
+
+            position: relative;
+
+            position: sticky;
+            top: 0px;
+        }
+        
+        .hero-image{
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            float: left;
+            margin-right: 12px;
+            border-radius: 100px;
+            margin-left: 15px;
+            margin-top: 15px;
+        }
+        
+        .name{
+            padding: 27px;
+            
+        }
+        .container{
+            height: 50px;
+            width: 600px;
+
+            margin-left: 15px;
+            margin-top: 15px;
+
+            display: flex;
+            justify-content: space-around;
+
+            position: absolute;
+            right: 0;
+            top: 10px;
+        }
+        nav div a{
+            text-decoration: non;
+            color: white;
+        }
+        #burger{
+            color: white;
+            font-size: 1.5rem;
+            display: none;
+        }
+        .menu-panel{
+            background-color: black;
+            color: white;
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            right: -100%;
+        }
+        .menu-panel ul{
+            list-style: none;
+            padding: 50px 20px;
+        }
+        .menu-panel ul li {
+            margin-bottom: 16px;
+        }
+        .menu-panel ul li a{
+            text-decoration: none;
+            color: white;
+        }
+        .close-btn{
+            background-color: transparent;
+            color: white;
+            font-size: 2rem;
+            position: absolute;
+            top: 10px;
+
+
+        }
+        @media screen and (max-width:575px) {
+            .name{
+                opacity: 0;
+            }
+            a{
+                display: none;
+            }
+            #burger{
+                display: block;
+            }
+        }
+        
+</style>
+<body>
+    <div class="heder">
+
+        <img class="hero-image" src="/assets/images/Profile-Photo.jpg" alt="my image" >
+        <p class="name"> Tharusha Sandaruwan</p>    
+    
+        <nav>
+            <div class="container">
+                
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#service">Service</a>
+                    <a href="#contact">Contact</a>
+                
+            </div>
+        </nav>
+        <i class="fa-solid fa-bars" id="burger" aria-hidden="true"></i>
+
+        <nav class="menu-panel" >
+            <button class="close-btn" id="btn-close"></button>
+            <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#service">Service</a></li>
+                    <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+
+    </div>
+</body>
+</html>

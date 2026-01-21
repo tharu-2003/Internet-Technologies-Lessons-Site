@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lesson-form-validations.html</title>
+    <style>
+        body{
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50% , -50%);
+        }
+        #container{
+            height: 450px;
+            width: 400px;
+            padding: 31px;
+            border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            border-radius: 10px;
+        }
+        input{
+            height: 30px;
+            width: 98%;
+            margin-bottom: 25px;
+        }
+        label{
+            font-weight: 700;
+        }
+        #reg-btn{
+            width: 100px;
+            height: 30px;
+            background-color: blue;
+            color: white;
+            border-radius: 10px;
+        }
+        h1{
+            font-weight: 600;
+        }
+        .error{
+            color: red;
+            position: relative;
+            top: -24px;
+            font-size: 10px;
+            height: 10px;
+        }
+
+        .table-container{
+            width: 440px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+        }
+        #table{
+            border: 1px solid black;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td ,th {
+            border: 1px solid black;
+            text-align: left;
+            padding: 8px;
+        }
+        th{
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>     
+        <form action="" id="container">
+                <h1>Customer Registration</h1>
+            
+                <label for="full name">Full Name</label>
+                <input type="text" id="full-name">
+                <span class="error" id="fullNameError"></span>
+            
+                <label for="email">Email</label>
+                <input type="email" id="email">
+                <span class="error" id="emailError"></span>
+            
+                <label for="password">Password</label>
+                <input type="password" id="password">
+                <span class="error" id="passwordError"></span>
+            
+                <label for="confirm password">Conffirm Password</label>
+                <input type="password" id="confirm-password">
+                <span class="error" id="confirmPasswordError"></span>
+
+                <button type="submit" id="reg-btn">Register</button>
+            
+        </form>
+
+        <div class="table-container">
+            <h2>Registered Customer</h2>
+            <table id="table">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    
+                </tbody>
+            </table>
+        </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+
+        let userArray = [];
+
+        $(document).ready(function () {
+            $('#container').submit(function (event) {
+                    event.preventDefault();
+
+                    if(isValidated()){
+                        let user = {
+                            fullName: $('#full-name').val(),
+                            email: $('#email').val(),
+                            password: $('#password').val(),
+                        };
+                        userArray.push(user);
+                        // console.log(userArray);
+
+                        addToTable(user);
+
+                        $('#container')[0].reset();
+                    }
+
+                    function addToTable(user){
+                        let newRow = `<tr>
+                            <td>${user.fullName}</td>
+                            <td>${user.email}</td>
+                        </tr>`;
+                        $('#table-body').append(newRow);
+                    }
+
+                    function isValidated(){
+                        let fullName = $('#full-name').val();
+                        let email = $('#email').val();
+                        let password = $('#password').val();
+                        let confirmPassword = $('#confirm-password').val();
+                        
+                        isValid = true;
+
+                        if(!fullName){
+                            $('#fullNameError').text("Please enter your full name");
+                            isValid = false;
+                        }else{
+                            $('#fullNameError').text("");
+                        }
+
+                        if(!email){
+                            $('#emailError').text("Please enter your Email");
+                            isValid = false;
+                        }else{
+                            $('#emailError').text("");
+                        }
+
+                        if(!password){
+                            $('#passwordError').text("Please enter your Password");
+                            isValid = false;
+                        }else{
+                            $('#passwordError').text("");
+                        }
+
+                        if(!confirmPassword){
+                            $('#confirmPasswordError').text("Please enter your Confirm Password");
+                            isValid = false;
+                        }else{
+                            $('#confirmPasswordError').text("");
+                            
+                            if(password !== confirmPassword){
+                                $('#confirmPasswordError').text("miss-matach Password");
+                                isValid = false;
+                            }else{
+                                $('#confirmPasswordError').text("");
+                            }
+                        }
+                        return isValid;
+                    }
+
+            });
+        })
+    </script>
+</body>
+</html>

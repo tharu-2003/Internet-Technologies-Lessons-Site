@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Tharusha Sandaruwan's portfolio showcasing Internet Technologies coursework"/>
+    <meta name="keywords" content="HTML, CSS, JavaScript, Portfolio, Tharusha, Web Development"/>
+    <meta name="author" content="Tharusha Sandaruwan"/>
+    
+    <title>Tharusha Sandaruwan | Internet Technologies</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="/css/index.css"/>
+    <link rel="icon" href="/assets/images/profileImage.jpg"/>
+    
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #4cc9f0;
+            --text: #2b2d42;
+            --text-light: #8d99ae;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --border-radius: 12px;
+        }
+        
+        /* Dark mode variables */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #4895ef;
+                --secondary: #3a0ca3;
+                --text: #f8f9fa;
+                --text-light: #adb5bd;
+                --bg: #121212;
+                --card-bg: #1e1e1e;
+                --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            padding: 2rem;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(67, 97, 238, 0.3);
+        }
+        
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin: 2rem 0 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            color: var(--secondary);
+            margin: 1.5rem 0 1rem;
+        }
+        
+        .intro {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .intro b {
+            color: var(--text);
+            font-weight: 600;
+        }
+        
+        .intro i {
+            color: var(--primary);
+        }
+        
+        .modules {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .module-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .module-card.expandable {
+            cursor: pointer;
+        }
+        
+        .module-card.expandable h3::after {
+            content: '+';
+            float: right;
+            font-weight: normal;
+            transition: var(--transition);
+        }
+        
+        .module-card.expandable.active h3::after {
+            content: '-';
+        }
+        
+        .lesson-list {
+            list-style-type: none;
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+        
+        .lesson-list.collapsed {
+            max-height: 0;
+            overflow: hidden;
+        }
+        
+        .lesson-item {
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .lesson-item::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+        
+        .lesson-link {
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            padding: 0.5rem 0;
+        }
+        
+        .lesson-link:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .lesson-link i {
+            margin-right: 0.5rem;
+            color: var(--accent);
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Scrollbar styling */
+        .lesson-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .lesson-list::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 3px;
+        }
+        
+        .lesson-list::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 3px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem 0;
+            color: var(--text-light);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .modules {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .module-card {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+        
+        .module-card:nth-child(1) { animation-delay: 0.1s; }
+        .module-card:nth-child(2) { animation-delay: 0.2s; }
+        .module-card:nth-child(3) { animation-delay: 0.3s; }
+        .module-card:nth-child(4) { animation-delay: 0.4s; }
+        .module-card:nth-child(5) { animation-delay: 0.5s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Internet Technologies B72</h1>
+        </header>
+        
+        <div class="profile">
+            <img 
+                src="/assets/images/my image.jpg" 
+                alt="Tharusha Sandaruwan" 
+                class="profile-image"
+                loading="lazy"/>
+            
+            <p class="intro"><b>My name is <i>Tharusha Sandaruwan</i></b></p>
+        </div>
+        
+        <main>
+            <h2><i class="fas fa-book-open"></i> Module Contents</h2>
+            
+            <div class="modules">
+                <!-- HTML Lessons Card -->
+                <div class="module-card expandable active">
+                    <h3><i class="fab fa-html5"></i> HTML Lessons</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item">
+                            <a href="/pages/lesson-text.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-file-alt"></i> Lesson-text
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/pages/lesson-list.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-list-ul"></i> Lesson-list
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/pages/lesson-hyperlink.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-link"></i> Lesson-hyperlink
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/pages/lesson-media-contents.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-photo-video"></i> Lesson-media-contents
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/pages/lesson-form-elements.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-edit"></i> Lesson-form-elements
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/pages/lesson-tables.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-table"></i> Lesson-tables
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/pages/lesson-structural.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-code"></i> Lesson-structural
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/pages/lesson-icons.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-icons"></i> Lesson-icons
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- CSS Lessons Card 1 -->
+                <div class="module-card expandable active">
+                    <h3><i class="fab fa-css3-alt"></i> CSS Lessons (Part 1)</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item">
+                            <a href="pages/lesson-css-text.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-font"></i> CSS Text
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="pages/lesson-css-specifity.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-arrow-up"></i> CSS Specificity
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="pages/lesson-css-shapes.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-shapes"></i> CSS Shapes
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="pages/lesson-css-selectors.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-mouse-pointer"></i> CSS Selectors
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="pages/lesson-css-integration.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-paint-brush"></i> CSS Integration
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="pages/lesson-css-integration-priority.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-sort-amount-up"></i> CSS Integration Priority
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="pages/lesson-css-borders.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-border-style"></i> CSS Borders
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="pages/lesson-css-background.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-image"></i> CSS Background
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- CSS Lessons Card 2 -->
+                <div class="module-card expandable active">
+                    <h3><i class="fab fa-css3-alt"></i> CSS Lessons (Part 2)</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item">
+                            <a href="pages/lesson-css-boxmodel.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-square"></i> CSS Box Model
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="pages/lesson-css-flexbox.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-boxes"></i> CSS Flexbox
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="pages/lesson-css-floating.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-water"></i> CSS Floating
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="pages/lesson-css-important.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-exclamation-circle"></i> CSS Important
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="pages/lesson-css-margins.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-arrows-alt"></i> CSS Margins
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="pages/lesson-css-pading.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-arrows-alt-h"></i> CSS Padding
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="pages/lesson-css-units.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-ruler"></i> CSS Units
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="pages/lesson-css-positions.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-map-marker-alt"></i> CSS Positions
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- CSS Lessons Card 3 -->
+                <div class="module-card expandable active">
+                    <h3><i class="fab fa-css3-alt"></i> CSS Lessons (Part 3)</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item">
+                            <a href="pages/lesson-css-grid.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-th"></i> CSS Grid
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="pages/lesson-css-grid-layout.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-border-all"></i> CSS Grid Layout
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="pages/lesson-css-transitions.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-exchange-alt"></i> CSS Transitions
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="pages/lesson-css-animations.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-film"></i> CSS Animations
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="pages/lesson-css-media-queries.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-mobile-alt"></i> CSS Media Queries
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- JavaScript Lessons Card -->
+                <div class="module-card expandable active">
+                    <h3><i class="fab fa-js"></i> JavaScript Lessons</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item">
+                            <a href="/pages/lesson-js-integration.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-code"></i> JS Integration
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/pages/lesson-form-validations.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-check-circle"></i> Form Validations
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/pages/lesson-event-listeners.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-headphones"></i> Event Listeners
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/pages/lesson-DOM-manipulation.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-sitemap"></i> DOM Manipulation
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/pages/lesson-DOM-selectors.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-mouse-pointer"></i> DOM Selectors
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/pages/lesson-boostrap-integration.html" target="_blank" class="lesson-link">
+                                <i class="fab fa-bootstrap"></i> Bootstrap Integration
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/pages/lesson-jQuery-basics.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-bolt"></i> jQuery Basics
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/pages/lesson-jQuery-integration.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-plug"></i> jQuery Integration
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Exercises Card 1 -->
+                <div class="module-card expandable active">
+                    <h3><i class="fas fa-dumbbell"></i> Exercises (Part 1)</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item">
+                            <a href="/exercises/Exercise-1.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-1"></i> Exercise-1
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/exercises/Exercise-2.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-2"></i> Exercise-2
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/exercises/Exercise-3.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-3"></i> Exercise-3
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/exercises/Exercise-4.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-4"></i> Exercise-4
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/exercises/Exercise-5.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-5"></i> Exercise-5
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/exercises/Exercise-6.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-6"></i> Exercise-6
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/exercises/Exercise-7.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-7"></i> Exercise-7
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/exercises/Exercise-8.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-8"></i> Exercise-8
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Exercises Card 2 -->
+                <div class="module-card expandable active">
+                    <h3><i class="fas fa-dumbbell"></i> Exercises (Part 2)</h3>
+                    <ul class="lesson-list">
+                        <li class="lesson-item">
+                            <a href="/exercises/Exercise-9.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-9"></i> Exercise-9
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/exercises/Exercise-10.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-0"></i> Exercise-10
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/exercises/Exercise-11.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-1"></i> Exercise-11
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/exercises/Exercise-12.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-2"></i> Exercise-12
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/exercises/Exercise-13.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-3"></i> Exercise-13
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/exercises/Exercise-14.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-4"></i> Exercise-14
+                            </a>
+                        </li>
+                        <li class="lesson-item">
+                            <a href="/exercises/Exercise-16.html" target="_blank" class="lesson-link">
+                                <i class="fas fa-6"></i> Exercise-16
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2023 Tharusha Sandaruwan. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Toggle expandable cards
+        document.querySelectorAll('.module-card.expandable h3').forEach(header => {
+            header.addEventListener('click', () => {
+                const card = header.parentElement;
+                const list = card.querySelector('.lesson-list');
+                
+                card.classList.toggle('active');
+                list.classList.toggle('collapsed');
+            });
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

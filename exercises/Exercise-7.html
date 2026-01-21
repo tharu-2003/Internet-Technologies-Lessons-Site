@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise-7</title>
+    <style>
+        .body{
+            margin: 0;
+        }
+        .heder{
+            background-color: aqua;
+            height: 80px;
+            width: 1500px;
+
+            position: relative;
+
+            position: sticky;
+            top: 0px;
+        }
+        
+        img{
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            float: left;
+            margin-right: 12px;
+            border-radius: 100px;
+            margin-left: 15px;
+            margin-top: 15px;
+        }
+        .name{
+            padding: 27px;
+        }
+        .container{
+            height: 50px;
+            width: 600px;
+
+            margin-left: 15px;
+            margin-top: 15px;
+
+            display: flex;
+            justify-content: space-around;
+
+            position: absolute;
+            right: 0;
+            top: 10px;
+        }
+        .mainContent{
+            height: 700px;
+            width: 750px;
+
+            position: absolute;
+            background-color: antiquewhite;
+        }
+        .image{
+            height: 700px;
+            width: 750px;
+            background: url('/assets/images/Profile-Photo.jpg');
+        }
+    </style>
+</head>
+<body>
+    <div class="heder">
+
+        
+            <img src="/assets/images/Profile-Photo.jpg" alt="my image" >
+            <p class="name"> Tharusha Sandaruwan</p>    
+        
+        
+        <nav>
+            <div class="container">
+                
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#service">Service</a>
+                    <a href="#contact">Contact</a>
+                
+            </div>
+        </nav>
+    </div>
+    <div class="mainContent">
+        <div class="informaiton">
+            <h1>Welcome mt Website</h1>
+
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                Doloremque eos consequuntur veritatis dolorum rem dolores eius 
+                expedita neque sit delectus?</p>
+        </div>
+        <div class="image">
+            
+        </div>
+    </div>
+</body>
+</html>

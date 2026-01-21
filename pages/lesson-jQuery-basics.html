@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lesson-jQuery-basics</title>
+</head>
+<body>
+    <h1 id="heading">jQueryBasics</h1>
+    <p id="paragraph">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi nulla harum laudantium, 
+        iusto unde sunt animi! Quidem et laudantium explicabo maxime voluptatum totam itaque voluptate 
+        veniam incidunt animi. Natus iusto neque in ipsa ad. Tempore delectus debitis laboriosam 
+        exercitationem eligendi dolores cumque necessitatibus numquam! Iste culpa tempore eligendi ipsam quod.
+    </p>
+    <p id="paragraph2">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi nulla harum laudantium, 
+        iusto unde sunt animi! Quidem et laudantium explicabo maxime voluptatum totam itaque voluptate 
+        veniam incidunt animi. Natus iusto neque in ipsa ad. Tempore delectus debitis laboriosam 
+        exercitationem eligendi dolores cumque necessitatibus numquam! Iste culpa tempore eligendi ipsam quod.
+    </p>
+    <button id="btn">Button</button>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // console.log("jQuery is ready");
+
+            $('#heading').css("color" , "red");
+            $('#paragraph').css('background-color' , "yellow");
+
+            $('#btn').css('color','white').css('background-color','green').css('width','100px').css('height','50px').css('border-radius','20px');
+            
+            $( "#btn" ).on( "click", notify);
+
+            // $( "#btn" ).click(function () { 
+            //      alert( "Handler for `click` called." );
+            // });
+
+            function notify() {
+                //  alert( "Handler for `click` called." );
+                // $('p').hide();
+                // $("p").toggle();
+                // $("p").fadeOut();    
+                $("p").fadeToggle();    
+            } 
+
+            function handlerin() {
+                $('#paragraph2').css('background-color' , "pink");
+            }
+
+            function handlerout() {
+                $('#paragraph2').css('background-color' , "white");
+            }
+            $('#paragraph2').on( "mouseenter" , handlerin).on( "mouseleave" , handlerout);
+
+        });
+    </script>
+</body>
+</html>

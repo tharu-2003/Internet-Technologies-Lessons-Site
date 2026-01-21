@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise-9</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .container{
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            justify-content: space-around;
+            background-color: aquamarine;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            background-color: white;
+            box-shadow: 1px 4px 7px gray;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center ;
+
+            transition: transform 0.5s ease-in-out;
+        }
+        .box:hover{
+            transform: scale(1.5); 
+        }
+        .mood-emoji{
+            font-size: 40px;
+            transition: transform 0.5s ease-in-out;
+            
+        }
+        .box:hover .mood-emoji{
+            font-size: 52px;
+            
+        }
+        .mood-name{
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .box:hover .mood-name{
+            opacity: 1;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box box1">
+            <span class="mood-emoji">😁</span>
+            <span class="mood-name">Happy</span>
+        </div>
+        <div class="box box2">
+            <span class="mood-emoji">😁</span>
+            <span class="mood-name">Happy</span>
+        </div>
+        <div class="box box3">
+            <span class="mood-emoji">😁</span>
+            <span class="mood-name">Happy</span>
+        </div>
+        <div class="box box4">
+            <span class="mood-emoji">😁</span>
+            <span class="mood-name">Happy</span>
+        </div>
+    </div>
+</body>
+</html>

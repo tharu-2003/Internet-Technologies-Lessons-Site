@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lessson Css Transition</title>
+    <style>
+        #addToCartButton{
+            background-color: white;
+            border: 2px solid black;
+            padding: 12px 48px;
+            color: black;
+            border-radius: 12px;
+            
+        }
+        #addToCartButton:hover{
+            background-color: black;
+            color: white;
+            cursor: pointer;
+
+            transition-property: background-color;
+            transition-duration: 3s;
+            transition-timing-function: ease-in-out;
+            transition-delay: 1s;
+        }
+        .circle{
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            background-color: green;
+            transition: transform 3s ease-in-out , background-color 3s ease-in-out , scale 3s ease-in-out ;
+
+        }
+        .circle:hover{
+            /* transition: transform 3s ease-in-out , background-color 3s ease-in-out , scale 3s ease-in-out ; */
+            
+            transform: translateY(300px);
+            background-color: aqua;
+            scale: 5;
+        }
+        .image-container{
+            width: 200px;
+            height: 200px;
+            /* transition: transform 3s ease-in-out; */
+        }
+        .image{
+            
+            width: 100%;
+            transition: transform 3s ease-in-out;
+        }
+        
+        .image-container:hover img{
+            transform:  rotate(360deg) scale(2);
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Transition</h1>
+    
+    <button id="addToCartButton">Add To Cart</button>
+    
+    <br><hr><br>
+
+    <div class="circle"></div>
+
+    <br><hr><br>
+
+    <div class="image-container">
+        <img class="image" src="/assets/images/rottweiler.avif" alt="test image">
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise-3</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 4px;
+        }
+    </style>
+</head>
+<body>
+    <table style="width: 400px;">
+        <tr style="height: 40px;">
+            <td colspan="4">
+                <strong>
+                    <label for="personalInformation">Personal Information</label>
+                </strong>
+            </td>
+        </tr>
+        <tr style="height: 40px;">
+            <td>
+                <strong>
+                    <label for="name">Name:</label>
+
+                </strong>
+            </td>
+            <td colspan="3">
+                <input type="text" placeholder="Enter name here">
+            </td>
+        </tr>
+        <tr style="height: 40px;">
+            <td>
+                <strong>
+                    <label for="age">Age:</label>
+                </strong>
+            </td>
+            <td colspan="3">
+                <input type="number" value="18" />
+            </td>
+        </tr>
+        <tr style="height: 40px;">
+            <td rowspan="3">
+                <strong>
+                    <label for="address">Address:</label>
+                </strong>
+            </td>
+            <td>
+                <strong>
+                    <label for="street">Street:</label>
+                </strong>
+            </td>
+            <td colspan="2">
+                <input type="text" placeholder="Street">
+            </td>
+        </tr>
+        <tr style="height: 40px;">
+            <td>
+                <strong>
+                    <label for="city">City:</label>
+                </strong>
+            </td>
+            <td colspan="2">
+                <input type="text" placeholder="City">
+            </td>
+        </tr>
+        <tr style="height: 40px;">
+            <td>
+                <strong>
+                    <label for="zipCode">Zip Code:</label>
+                </strong>
+            </td>
+            <td colspan="2">
+                <input type="text" placeholder="Zip Code">
+            </td>
+        </tr>
+        <tr style="height: 40px;">
+            <td colspan="4">
+                <strong>
+                    <label for="additionalInformation">Additional Information</label>
+                </strong>
+            </td>
+        </tr>
+        <tr style="height: 80px;">
+            <td colspan="4">
+                <textarea 
+                    name="massage" 
+                    id="massage" 
+                    rows="4"
+                    cols="80"
+                ></textarea>
+            </td>
+        </tr>
+        <tr style="height: 40px;">
+            <td colspan="4">
+                <button type="submit"> Submit </button>
+            </td>
+        </tr>
+    </table>
+    
+</body>
+</html>
